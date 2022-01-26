@@ -28,6 +28,7 @@ const css = StyleSheet.create({
     },
     textButton:{
         textAlign:'center',
+        
         fontSize:20,
         fontWeight:'bold',
     },
