@@ -28,6 +28,15 @@ const styles = StyleSheet.create({
         borderTopWidth:2,
         alignSelf:'center',
     },
+    titleAdm:{
+        marginTop:'30%',
+        textAlign:'center',
+        alignSelf:'center',
+        color:'#fff',
+        fontSize:30,
+        fontWeight:'bold',
+    },
+
   });
 
 export {styles};

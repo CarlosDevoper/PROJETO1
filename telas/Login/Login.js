@@ -75,7 +75,7 @@ export default function Login (props) {
             </View>
             <View style={styles.footer}>
                 <TouchableOpacity style={css.buttonVoltar}
-                // onPress={() =>props.navigation.navigate('ADM')}
+                onPress={() =>props.navigation.navigate('ADM')}
                 >
                 
                 <Text style={css.textAdm}>Entrar como Administrador</Text>

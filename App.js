@@ -6,6 +6,8 @@ import { styles } from './Style';
 import Home from './telas/inicial/home';
 import Login from './telas/Login/Login';
 import Register from './telas/Cadastro/Register';
+import Adm from './telas/Adm/Adm';
+import Usuario from './telas/Usuario/usuario';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -20,6 +22,12 @@ export default function App() {
             headerShown:false
         }}/>
         <Stack.Screen name="Register" component={Register} options={{
+            headerShown:false
+        }}/>
+        <Stack.Screen name="ADM" component={Adm} options={{
+            headerShown:false
+        }}/>
+        <Stack.Screen name="Usuario" component={Usuario} options={{
             headerShown:false
         }}/>
       </Stack.Navigator>

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { Platform   ,Vibration,Keyboard,Pressable,StyleSheet, Text, View, KeyboardAvoidingView, TextInput, TouchableOpacity, Image} from 'react-native';
-import styles from '../Cadastro/Styles';
-import css from './CSS'
+import css from '../Cadastro/Styles';
+import { styles } from '../../Style';
 export default function Adm(props) {
 
     const [erroMessage, setErroMessage] = useState(null);
@@ -19,51 +19,51 @@ export default function Adm(props) {
     }
 
     return(
-        <Pressable onPress={Keyboard.dismiss}> 
-        <View style={styles.voltar}>
-            <TouchableOpacity style={styles.buttonVoltar}
+        <Pressable onPress={Keyboard.dismiss} style={styles.container}> 
+        <View style={styles.header}>
+            <TouchableOpacity style={css.buttonVoltar}
             onPress={() =>props.navigation.navigate('Home')}
             >
-                <Image style={styles.img} source={require('../../assets/img/setaVoltar.png')}/>
-                <Text style={styles.textForm}>Voltar</Text>
+                <Image style={css.img} source={require('../../assets/img/setaVoltar.png')}/>
+                <Text style={css.textForm}>Voltar</Text>
             </TouchableOpacity>
         </View>
         <KeyboardAvoidingView 
         behavior={Platform.OS == "ios" ? "padding" : "height"}
         style={css.container}>
             <View>
-                <Text style={css.titleAdm}>ENTRAR COMO ADMINISTRADOR</Text>
+                <Text style={styles.titleAdm}>ENTRAR COMO ADMINISTRADOR</Text>
             </View> 
             
-            <View style={styles.containerForm}>
+            <View style={css.containerForm}>
 
-                <View style={styles.imageName}>
-                    <Image style={styles.img} source={require('../../assets/img/telefone.png')}/>
-                    <Text style={styles.textForm}>Telefone:</Text>
+                <View style={css.imageName}>
+                    <Image style={css.img} source={require('../../assets/img/telefone.png')}/>
+                    <Text style={css.textForm}>Telefone:</Text>
                 </View>
-                <TextInput style={styles.input} placeholder='Telefone'
+                <TextInput style={css.input} placeholder='Telefone'
                 keyboardType='numeric'
                 value={telefone}
                 onChangeText={setTelefone}
                 />
-                <Text style={styles.messageErro}>{erroMessage}</Text>
+                <Text style={css.messageErro}>{erroMessage}</Text>
                 
-                <View style={styles.imageName}>
-                    <Image style={styles.img} source={require('../../assets/img/senha.png')}/>
-                    <Text style={styles.textForm}>Senha:</Text>
+                <View style={css.imageName}>
+                    <Image style={css.img} source={require('../../assets/img/senha.png')}/>
+                    <Text style={css.textForm}>Senha:</Text>
                 </View>
-                <TextInput style={styles.input} placeholder='Senha' secureTextEntry={true}
+                <TextInput style={css.input} placeholder='Senha' secureTextEntry={true}
                 value={senha}
                 onChangeText={setSenha}
                 />
-                <Text style={styles.messageErro}>{erroMessage}</Text>
+                <Text style={css.messageErro}>{erroMessage}</Text>
                 
                 
                 <TouchableOpacity 
-                style={styles.button}
+                style={css.button}
                 onPress={() => validationImc()}
                 >
-                    <Text style={styles.textButton}>Confirmar</Text>
+                    <Text style={css.textButton}>Confirmar</Text>
                 </TouchableOpacity>
                 
             </View>
