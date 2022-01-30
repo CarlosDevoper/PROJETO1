@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
-import { Platform,Vibration,Keyboard,StyleSheet, Text, View, KeyboardAvoidingView, TextInput, TouchableOpacity, Image, Pressable} from 'react-native';
+import React, {useState,useEffect} from 'react';
+import {Alert,Platform,Vibration,Keyboard,StyleSheet, Text, View, KeyboardAvoidingView, TextInput, TouchableOpacity, Image, Pressable} from 'react-native';
 import css from './Styles';
 import { styles } from '../../Style';
+import config from '../../config/config.json';
 export default function Register(props) {
 
     const [erroMessage, setErroMessage] = useState(null);
@@ -9,6 +10,38 @@ export default function Register(props) {
     const [telefone, setTelefone] = useState(null);
     const [senha, setSenha] = useState(null);
     const [login, setLogin] = useState(null);
+
+
+    //Envio dos dados do formulário para o back-end
+    async function sendForm()
+    {
+        Alert.alert("Parabéns", "Usuário cadastrado com sucesso!,deseja fazer o login no aplicativo?", [
+            {
+              text: "Não",
+              onPress: () => null,
+              style: "cancel" 
+            },
+            { text: "Sim", onPress: () => 
+              {
+                props.navigation.navigate('Login');
+              }
+            }
+          ]);
+        let response = await fetch(`${config.urlRoot}cadastro`,{
+            method: 'POST',
+            headers:{
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name: user,
+                cell: telefone,
+                password: senha,
+                admin: 0,
+            })
+        });
+        
+    }
 
     //Verificar a presença de dados
     function verificationDados(){
@@ -76,7 +109,7 @@ export default function Register(props) {
                 
                 <TouchableOpacity 
                 style={css.button}
-                onPress={() => verificationDados()}
+                onPress={() => [verificationDados(),sendForm()]}
                 >
                     <Text style={css.textButton}>Confirmar</Text>
                 </TouchableOpacity>

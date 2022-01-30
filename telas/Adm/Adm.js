@@ -2,14 +2,44 @@ import React, {useState} from 'react';
 import { Platform   ,Vibration,Keyboard,Pressable,StyleSheet, Text, View, KeyboardAvoidingView, TextInput, TouchableOpacity, Image} from 'react-native';
 import css from '../Cadastro/Styles';
 import { styles } from '../../Style';
+import config from '../../config/config.json';
 export default function Adm(props) {
 
     const [erroMessage, setErroMessage] = useState(null);
-    const [telefone, setTelefone] = useState(null);
+    const [erroLogin, setErroLogin] = useState(null);
+    const [user, setUser] = useState(null);
     const [senha, setSenha] = useState(null);
 
-    function validationImc(){
-        if (telefone == null || senha ==null ) {
+    //Envio dos dados do formulário para o back-end
+    async function sendForm()
+    {
+        let response = await fetch(`${config.urlRoot}loginAdm`,{
+            method: 'POST',
+            headers:{
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name: user,
+                password: senha,
+            }) 
+        });
+        let json= await response.json();
+        if(json ==='error'){
+            console.log('error');
+            setErroLogin('Usuário ou senha inválidos');
+            Vibration.vibrate();
+            setTimeout(()=>{
+                setErroLogin(null);
+            },5000);
+        }else{
+            console.log('Okay');
+            props.navigation.navigate('Administrator');
+        }
+    }
+    //
+    function validationDaodos(){
+        if (user == null || senha ==null ) {
             Vibration.vibrate();
             setErroMessage("Campo Obrigatório*")
         }
@@ -30,21 +60,22 @@ export default function Adm(props) {
         </View>
         <KeyboardAvoidingView 
         behavior={Platform.OS == "ios" ? "padding" : "height"}
-        style={css.container}>
+        >
             <View>
                 <Text style={styles.titleAdm}>ENTRAR COMO ADMINISTRADOR</Text>
             </View> 
             
             <View style={css.containerForm}>
-
-                <View style={css.imageName}>
-                    <Image style={css.img} source={require('../../assets/img/telefone.png')}/>
-                    <Text style={css.textForm}>Telefone:</Text>
+            <View style={css.erroDiv}>
+            <Text style={css.erroLogin}>{erroLogin}</Text>
+            </View>
+            <View style={css.imageName}>
+                    <Image style={css.img} source={require('../../assets/img/perfilCadastro.png')}/>
+                    <Text style={css.textForm}>Nome:</Text>
                 </View>
-                <TextInput style={css.input} placeholder='Telefone'
-                keyboardType='numeric'
-                value={telefone}
-                onChangeText={setTelefone}
+                <TextInput style={css.input} placeholder='Usuário'
+                value={user}
+                onChangeText={setUser}
                 />
                 <Text style={css.messageErro}>{erroMessage}</Text>
                 
@@ -61,7 +92,7 @@ export default function Adm(props) {
                 
                 <TouchableOpacity 
                 style={css.button}
-                onPress={() => validationImc()}
+                onPress={() => [validationDaodos(),sendForm()]}
                 >
                     <Text style={css.textButton}>Confirmar</Text>
                 </TouchableOpacity>

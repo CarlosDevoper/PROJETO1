@@ -20,7 +20,7 @@ const css = StyleSheet.create({
       },
       containerForm:{
         width:'90%',
-        height:'80%',
+        height:'auto',
         margin:20,
         padding:15,
       },
@@ -90,7 +90,17 @@ const css = StyleSheet.create({
         borderLeftColor:'#6869AD',
         borderRightColor:'#6869AD',
     },
-
+    erroLogin:{
+      fontSize:20,
+        color:"#FF0000",
+        fontWeight:"bold",
+    },
+    erroDiv:{
+      width:'100%',
+      alignContent:'center',
+      alignItems:'center',
+      alignSelf:'center',
+    },
 });
 
 export default css

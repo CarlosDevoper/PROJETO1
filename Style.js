@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
         alignSelf:'center',
     },
     titleAdm:{
-        marginTop:'30%',
+        paddingTop:'30%',
         textAlign:'center',
         alignSelf:'center',
         color:'#fff',

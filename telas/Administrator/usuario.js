@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import { View, Text,TouchableOpacity,Image,BackHandler, Alert  } from 'react-native';
 import { styles } from '../../Style';
-import { css } from './Style';
+import { css } from '../Usuario/Style';
 
-export default function Usuario(props) {
+export default function Administrator(props) {
     useEffect(()=>{
       backAction = () => {
         Alert.alert("Atenção", "Você quer mesmo sair do aplicativo?", [
@@ -50,7 +50,7 @@ export default function Usuario(props) {
           </View>
         </View>
         <View style={css.body}>
-          <Text style={css.title}>Aula da semana</Text>
+          <Text style={css.title}>Bem VIndo Administrador</Text>
         </View>
       </View>
     )
