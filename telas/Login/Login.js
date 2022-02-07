@@ -42,12 +42,13 @@ export default function Login (props) {
 
     //Verificação se há dados nos inputs
     function validationDados(){
-        if (user == null || senha ==null ) {
+        if (user == null || senha ==null || user=='' || senha=='' ) {
             Vibration.vibrate();
             setErroMessage("Campo Obrigatório*")
         }
         else{
             setErroMessage(null);
+            sendForm();
             
         }
     }
@@ -98,7 +99,7 @@ export default function Login (props) {
                 
                 <TouchableOpacity 
                 style={css.button}
-                onPress={() => [validationDados(), sendForm()]}
+                onPress={() => [validationDados()]}
                 >
                     <Text style={css.textButton}>Confirmar</Text>
                 </TouchableOpacity>

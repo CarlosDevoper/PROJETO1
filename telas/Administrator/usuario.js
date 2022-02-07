@@ -1,9 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import { View, Text,TouchableOpacity,Image,BackHandler, Alert  } from 'react-native';
 import { styles } from '../../Style';
-import { css } from '../Usuario/Style';
-
+import { css } from './css';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import initial from '../AdmViews/inicial';
+import cadastr from '../AdmViews/cadastro';
+import aula from '../AdmViews/aulas';
 export default function Administrator(props) {
+
+  const Tab = createMaterialBottomTabNavigator();
     useEffect(()=>{
       backAction = () => {
         Alert.alert("Atenção", "Você quer mesmo sair do aplicativo?", [
@@ -27,31 +32,17 @@ export default function Administrator(props) {
     },[]);
 
     return(
-      <View style={styles.container}>
-        <View style={css.header}>
-          <View style={css.buttonPerfil}>
-            <TouchableOpacity>
-                <Image style={css.img} source={require('../../assets/img/Perfil.png')}/>
-                <Text style={css.textButton}>Perfil</Text>
-            </TouchableOpacity>
-          </View>
-
-          <View style={css.buttonConversas}>
-            <TouchableOpacity>
-                <Image style={css.img} source={require('../../assets/img/conversar.png')}/>
-                <Text style={css.textButton}>Mensagens</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={css.buttonAjuda}>
-            <TouchableOpacity>
-                <Image style={css.img} source={require('../../assets/img/interrogação.png')}/>
-                <Text style={css.textButton}>Ajuda</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-        <View style={css.body}>
-          <Text style={css.title}>Bem VIndo Administrador</Text>
-        </View>
-      </View>
+     <Tab.Navigator
+      activeColor='#fff'
+      inactiveColor='#000'
+      barStyle={css.tabBar}
+     >
+        <Tab.Screen 
+        name="Home" 
+        component={initial} 
+        />
+        <Tab.Screen name="Cadastrar" component={cadastr} />
+        <Tab.Screen name="Aula" component={aula} />
+      </Tab.Navigator>
     )
 }

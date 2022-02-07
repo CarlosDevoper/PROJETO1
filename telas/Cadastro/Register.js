@@ -14,7 +14,7 @@ export default function Register(props) {
 
     //Envio dos dados do formulário para o back-end
     async function sendForm()
-    {
+        {
         Alert.alert("Parabéns", "Usuário cadastrado com sucesso!,deseja fazer o login no aplicativo?", [
             {
               text: "Não",
@@ -27,6 +27,7 @@ export default function Register(props) {
               }
             }
           ]);
+        console.log('cadastrado');
         let response = await fetch(`${config.urlRoot}cadastro`,{
             method: 'POST',
             headers:{
@@ -39,8 +40,7 @@ export default function Register(props) {
                 password: senha,
                 admin: 0,
             })
-        });
-        
+        })
     }
 
     //Verificar a presença de dados
@@ -50,7 +50,11 @@ export default function Register(props) {
             setErroMessage("Campo Obrigatório*")
         }
         else{
-            setErroMessage(null)
+            setErroMessage(null);
+            sendForm();
+            setUser(null);
+            setTelefone(null);
+            setSenha(null);
         }
     }
 
@@ -109,7 +113,7 @@ export default function Register(props) {
                 
                 <TouchableOpacity 
                 style={css.button}
-                onPress={() => [verificationDados(),sendForm()]}
+                onPress={() => [verificationDados()]}
                 >
                     <Text style={css.textButton}>Confirmar</Text>
                 </TouchableOpacity>
