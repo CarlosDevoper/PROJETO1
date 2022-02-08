@@ -33,8 +33,7 @@ export default function initial(props) {
         </View>
         <View style={css.body}>
           <Text style={css.title}>Alunos Cadastrados na Plataforma</Text>
-          <Ionicons name="home" size={32} color='green'/>
-          <Text style={css.title}></Text>
+          
         </View>
       </View>
     )

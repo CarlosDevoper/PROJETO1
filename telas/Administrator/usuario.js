@@ -7,6 +7,7 @@ import initial from '../AdmViews/inicial';
 import cadastr from '../AdmViews/cadastro';
 import aula from '../AdmViews/aulas';
 import { Ionicons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 export default function Administrator(props) {
 
   const Tab = createMaterialBottomTabNavigator();
@@ -36,13 +37,25 @@ export default function Administrator(props) {
      <Tab.Navigator activeColor='#fff'inactiveColor='#000' barStyle={css.tabBar}>
         <Tab.Screen name="Home" component={initial} 
         options={{
-          tabBarIcon:()=>{
-            <Ionicons name="home" size={10} color='#fff'/>
-          } 
+          tabBarIcon:()=>(
+            <Ionicons name="home" size={25} color='#fff'/>
+          )
         }}
         />
-        <Tab.Screen name="Cadastrar" component={cadastr} />
-        <Tab.Screen name="Aula" component={aula} />
+        <Tab.Screen name="Cadastrar" component={cadastr} 
+        options={{
+          tabBarIcon:()=>(
+            <AntDesign name="addusergroup" size={25} color="#fff" />
+          )
+        }}
+        />
+        <Tab.Screen name="Aula" component={aula} 
+        options={{
+          tabBarIcon:()=>(
+            <AntDesign name="addfolder" size={25} color="#fff" />
+          )
+        }}
+        />
       </Tab.Navigator>
     )
 }
