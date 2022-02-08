@@ -1,4 +1,3 @@
-import { flushSync } from "react-dom";
 import { StyleSheet } from "react-native"
 
 const css = StyleSheet.create({
@@ -78,17 +77,19 @@ const css = StyleSheet.create({
         fontSize:18,
     },
     title:{
+        alignSelf:'center',
         color:'#6869AD',
-        textAlign:'center',
+        textAlign:'left',
         fontSize:28,
         fontWeight:'600',
+        width:'90%',
         marginTop:'1%',
     },
     titleAula:{
         width:'90%',
         color:'#000',
-        textAlign:'center',
-        fontSize:26,
+        textAlign:'left',
+        fontSize:22,
         fontWeight:'600',
         borderTopColor:'#222',
         borderWidth:2,
@@ -96,14 +97,14 @@ const css = StyleSheet.create({
         borderLeftColor:'#fff',
         borderRightColor:'#fff',
         alignSelf:'center',
-        marginTop:'1%',
+        paddingTop:'1%',
+        marginTop:'2%',
     },
     pdf:{
         width:'100%',
         height:'100%',
     },
     textFooter:{
-        fontWeight:'bold',
         color:'#000',
         fontSize:20,
         paddingLeft:'4%',

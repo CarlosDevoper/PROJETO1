@@ -3,10 +3,16 @@ import { View, Text,TouchableOpacity,Image,BackHandler, Alert } from 'react-nati
 import { styles } from '../../Style';
 import { css } from './Style';
 import WebView from 'react-native-webview';
-// import App from '../PDF/PDF';
+import { useFonts, Raleway_700Bold} from '@expo-google-fonts/raleway';
+import {Roboto_500Medium, Roboto_100Thin} from '@expo-google-fonts/roboto';
 
   
 export default function Usuario(props) {
+  let [fontsLoaded] = useFonts({
+    Raleway_700Bold,
+    Roboto_500Medium,
+    Roboto_100Thin,
+  });
 
   const [aula, setAula] = useState(1);
   const [titulo, setTitulo] = useState('Aula da Semana');
@@ -110,27 +116,27 @@ export default function Usuario(props) {
           <View style={css.buttonPerfil}>
             <TouchableOpacity>
                 <Image style={css.img} source={require('../../assets/img/Perfil.png')}/>
-                <Text style={css.textButton}>Perfil</Text>
+                <Text style={[{fontFamily:'Roboto_500Medium'},css.textButton]}>Perfil</Text>
             </TouchableOpacity>
           </View>
 
           <View style={css.buttonConversas}>
             <TouchableOpacity>
                 <Image style={css.img} source={require('../../assets/img/conversar.png')}/>
-                <Text style={css.textButton}>Mensagens</Text>
+                <Text style={[{fontFamily:'Roboto_500Medium'},css.textButton]}>Mensagens</Text>
             </TouchableOpacity>
           </View>
           <View style={css.buttonAjuda}>
             <TouchableOpacity>
                 <Image style={css.img} source={require('../../assets/img/interrogação.png')}/>
                 
-                <Text style={css.textButton}>Ajuda</Text>
+                <Text style={[{fontFamily:'Roboto_500Medium'},css.textButton]}>Ajuda</Text>
             </TouchableOpacity>
           </View>
         </View>
         <View style={css.body}>
-          <Text style={css.title}>{titulo}</Text>
-          <Text style={css.titleAula}>{tituloAula}</Text>
+          <Text style={[{fontFamily:'Raleway_700Bold'},,css.title]}>{titulo}</Text>
+          <Text style={[{fontFamily:'Roboto_500Medium'},css.titleAula]}>{tituloAula}</Text>
           <WebView 
             style={css.pdf}
             source={{ uri:link}}/>
@@ -142,7 +148,7 @@ export default function Usuario(props) {
             style={css.avanc}
             >
                 <Image style={css.imgSet} source={require('../../assets/img/setLeft.png')}/>
-                <Text style={css.textFooter}>Aula Anterior</Text>
+                <Text style={[{fontFamily:'Roboto_500Medium'},css.textFooter]}>Aula Anterior</Text>
 
             </TouchableOpacity>
   
@@ -150,13 +156,13 @@ export default function Usuario(props) {
               onPress={()=> somaNum()}
               style={css.avanc}
             >
-                <Text style={css.textFooter}>Próxima Aula</Text>
+                <Text style={[{fontFamily:'Roboto_500Medium'},css.textFooter]}>Próxima Aula</Text>
                 <Image style={css.imgSet} source={require('../../assets/img/setRight.png')}/>
             </TouchableOpacity>
           </View>
           <View style={css.Coment}>
           <TouchableOpacity>
-                <Text style={css.textFooter}>Comentar</Text>
+                <Text style={[{fontFamily:'Roboto_500Medium'},css.textFooter]}>Comentar</Text>
             </TouchableOpacity>
           </View>
         </View>

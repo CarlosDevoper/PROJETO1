@@ -2,12 +2,13 @@ import React, {useEffect, useState} from 'react';
 import { View, Text,TouchableOpacity,Image,BackHandler, Alert  } from 'react-native';
 import { styles } from '../../Style';
 import { css } from './css';
-
+import { Ionicons } from '@expo/vector-icons';
+import config from '../../config/config.json';
 
 
 export default function initial(props) {
-
-    return(
+    
+    return( 
       <View style={styles.container}>
         <View style={css.header}>
           <View style={css.buttonPerfil}>
@@ -32,6 +33,8 @@ export default function initial(props) {
         </View>
         <View style={css.body}>
           <Text style={css.title}>Alunos Cadastrados na Plataforma</Text>
+          <Ionicons name="home" size={32} color='green'/>
+          <Text style={css.title}></Text>
         </View>
       </View>
     )

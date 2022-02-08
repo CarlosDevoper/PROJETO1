@@ -5,18 +5,22 @@ const css = StyleSheet.create({
         flexDirection:'row',
         marginBottom:5,
         marginTop:5,
+        alignContent:'center',
+        marginBottom:'2%',
       },
       img:{
         marginTop:2.5,
         width:35,
         height:35,
         marginRight:6,
+        alignSelf:'center',
+        justifyContent:'center',
+        alignContent:'center',
       },
       title:{
         alignSelf:'center',
         color:'#fff',
         fontSize:36,
-        fontWeight:'bold',
       },
       containerForm:{
         width:'90%',
@@ -25,10 +29,10 @@ const css = StyleSheet.create({
         padding:15,
       },
       textForm:{
+        alignContent:'center',
         color:'#fff',
         fontSize:28,
-        fontWeight:'bold',
-        marginBottom:8,
+        marginBottom:2.5,
       },
       input:{
         width:'100%',
@@ -44,7 +48,9 @@ const css = StyleSheet.create({
         color:'#00ff00',
         fontSize:20,
         paddingBottom:'6%',
-        paddingTop:'6%',
+        paddingTop:'4%',
+        alignContent:'center',
+        justifyContent:'center',
       },
       button:{
         borderRadius:30,
@@ -57,7 +63,7 @@ const css = StyleSheet.create({
       },
       messageErro:{
         fontSize:16,
-        color:"#FF0000",
+        color:"#ffff22",
         fontWeight:"bold",
     },
     textAdm:{
@@ -92,7 +98,7 @@ const css = StyleSheet.create({
     },
     erroLogin:{
       fontSize:20,
-        color:"#FF0000",
+        color:"#ffff22",
         fontWeight:"bold",
     },
     erroDiv:{

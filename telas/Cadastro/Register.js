@@ -3,8 +3,14 @@ import {Alert,Platform,Vibration,Keyboard,StyleSheet, Text, View, KeyboardAvoidi
 import css from './Styles';
 import { styles } from '../../Style';
 import config from '../../config/config.json';
+import { useFonts, Raleway_700Bold} from '@expo-google-fonts/raleway';
+import { Roboto_100Thin} from '@expo-google-fonts/roboto';
 export default function Register(props) {
 
+    let [fontsLoaded] = useFonts({
+        Raleway_700Bold,
+        Roboto_100Thin,
+      });
     const [erroMessage, setErroMessage] = useState(null);
     const [user, setUser] = useState(null);
     const [telefone, setTelefone] = useState(null);
@@ -15,7 +21,7 @@ export default function Register(props) {
     //Envio dos dados do formulário para o back-end
     async function sendForm()
         {
-        Alert.alert("Parabéns", "Usuário cadastrado com sucesso!,deseja fazer o login no aplicativo?", [
+        Alert.alert("Parabéns", "Usuário cadastrado com sucesso!deseja fazer o login no aplicativo?", [
             {
               text: "Não",
               onPress: () => null,
@@ -48,6 +54,9 @@ export default function Register(props) {
         if (user == null || telefone == null || senha ==null || user == '' || telefone == '' || senha == '') {
             Vibration.vibrate();
             setErroMessage("Campo Obrigatório*")
+            setTimeout(()=>{
+                setErroMessage(null);
+            },3500);
         }
         else{
             setErroMessage(null);
@@ -69,19 +78,19 @@ export default function Register(props) {
             onPress={() =>props.navigation.navigate('Home')}
             >
                 <Image style={css.img} source={require('../../assets/img/setaVoltar.png')}/>
-                <Text style={css.textForm}>Voltar</Text>
+                <Text style={[{fontFamily:'Raleway_700Bold'},css.textForm]}>Voltar</Text>
             </TouchableOpacity>
             </View>
 
             <View  style={styles.body}> 
             <View>
-                <Text style={css.title}>CADASTRO</Text>
+                <Text style={[{fontFamily:'Raleway_700Bold'},css.title]}>CADASTRO</Text>
             </View> 
             
             <View style={css.containerForm}>
                 <View style={css.imageName}>
                     <Image style={css.img} source={require('../../assets/img/perfilCadastro.png')}/>
-                    <Text style={css.textForm}>Nome:</Text>
+                    <Text style={[{fontFamily:'Raleway_700Bold'},css.textForm]}>Nome:</Text>
                 </View>
                 <TextInput style={css.input} placeholder='Usuário'
                 value={user}
@@ -91,7 +100,7 @@ export default function Register(props) {
 
                 <View style={css.imageName}>
                     <Image style={css.img} source={require('../../assets/img/telefone.png')}/>
-                    <Text style={css.textForm}>Telefone:</Text>
+                    <Text style={[{fontFamily:'Raleway_700Bold'},css.textForm]}>Telefone:</Text>
                 </View>
                 <TextInput style={css.input} placeholder='Telefone'
                 keyboardType='numeric'
@@ -102,7 +111,7 @@ export default function Register(props) {
                 
                 <View style={css.imageName}>
                     <Image style={css.img} source={require('../../assets/img/senha.png')}/>
-                    <Text style={css.textForm}>Senha:</Text>
+                    <Text style={[{fontFamily:'Raleway_700Bold'},css.textForm]}>Senha:</Text>
                 </View>
                 <TextInput style={css.input} placeholder='Senha' secureTextEntry={true}
                 value={senha}
@@ -115,7 +124,7 @@ export default function Register(props) {
                 style={css.button}
                 onPress={() => [verificationDados()]}
                 >
-                    <Text style={css.textButton}>Confirmar</Text>
+                    <Text style={[{fontFamily:'Raleway_700Bold'},css.textButton]}>Confirmar</Text>
                 </TouchableOpacity>
                 </View>
             </View>
@@ -125,7 +134,7 @@ export default function Register(props) {
                 // onPress={() =>props.navigation.navigate('ADM')}
                 >
                 
-                <Text style={css.textAdm}>Entrar como Administrador</Text>
+                <Text style={[{fontFamily:'Roboto_100Thin'},css.textAdm]}>Entrar como Administrador</Text>
                 </TouchableOpacity>
         </View>
         </Pressable>

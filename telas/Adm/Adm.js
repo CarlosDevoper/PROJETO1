@@ -3,8 +3,11 @@ import { Platform   ,Vibration,Keyboard,Pressable,StyleSheet, Text, View, Keyboa
 import css from '../Cadastro/Styles';
 import { styles } from '../../Style';
 import config from '../../config/config.json';
+import { useFonts, Raleway_700Bold} from '@expo-google-fonts/raleway';
 export default function Adm(props) {
-
+    let [fontsLoaded] = useFonts({
+        Raleway_700Bold,
+      });
     const [erroMessage, setErroMessage] = useState(null);
     const [erroLogin, setErroLogin] = useState(null);
     const [user, setUser] = useState(null);
@@ -31,7 +34,7 @@ export default function Adm(props) {
             Vibration.vibrate();
             setTimeout(()=>{
                 setErroLogin(null);
-            },5000);
+            },3500);
         }else{
             console.log('Okay');
             props.navigation.navigate('Administrator');
@@ -39,12 +42,16 @@ export default function Adm(props) {
     }
     //
     function validationDaodos(){
-        if (user == null || senha ==null ) {
+        if (user == null || senha ==null || user == '' || senha == '' ) {
             Vibration.vibrate();
             setErroMessage("Campo Obrigatório*")
+            setTimeout(()=>{
+                setErroMessage(null);
+            },3500);
         }
         else{
-            setErroMessage(null)
+            setErroMessage(null);
+            sendForm();
         }
     }
 
@@ -55,14 +62,14 @@ export default function Adm(props) {
             onPress={() =>props.navigation.navigate('Home')}
             >
                 <Image style={css.img} source={require('../../assets/img/setaVoltar.png')}/>
-                <Text style={css.textForm}>Voltar</Text>
+                <Text style={[{fontFamily:'Raleway_700Bold'},css.textForm]}>Voltar</Text>
             </TouchableOpacity>
         </View>
         <KeyboardAvoidingView 
         behavior={Platform.OS == "ios" ? "padding" : "height"}
         >
             <View>
-                <Text style={styles.titleAdm}>ENTRAR COMO ADMINISTRADOR</Text>
+                <Text style={[{fontFamily:'Raleway_700Bold'},styles.titleAdm]}>ENTRAR COMO ADMINISTRADOR</Text>
             </View> 
             
             <View style={css.containerForm}>
@@ -71,7 +78,7 @@ export default function Adm(props) {
             </View>
             <View style={css.imageName}>
                     <Image style={css.img} source={require('../../assets/img/perfilCadastro.png')}/>
-                    <Text style={css.textForm}>Nome:</Text>
+                    <Text style={[{fontFamily:'Raleway_700Bold'},,css.textForm]}>Nome:</Text>
                 </View>
                 <TextInput style={css.input} placeholder='Usuário'
                 value={user}
@@ -81,7 +88,7 @@ export default function Adm(props) {
                 
                 <View style={css.imageName}>
                     <Image style={css.img} source={require('../../assets/img/senha.png')}/>
-                    <Text style={css.textForm}>Senha:</Text>
+                    <Text style={[{fontFamily:'Raleway_700Bold'},css.textForm]}>Senha:</Text>
                 </View>
                 <TextInput style={css.input} placeholder='Senha' secureTextEntry={true}
                 value={senha}
@@ -92,9 +99,9 @@ export default function Adm(props) {
                 
                 <TouchableOpacity 
                 style={css.button}
-                onPress={() => [validationDaodos(),sendForm()]}
+                onPress={() => [validationDaodos()]}
                 >
-                    <Text style={css.textButton}>Confirmar</Text>
+                    <Text style={[{fontFamily:'Raleway_700Bold'},css.textButton]}>Confirmar</Text>
                 </TouchableOpacity>
                 
             </View>
