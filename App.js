@@ -1,4 +1,4 @@
-import React from 'react';
+import {React, useEffect, useState} from 'react';
 import {Text, View,SafeAreaView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';  
@@ -12,10 +12,28 @@ import Administrator from './telas/Administrator/usuario';
 import { useFonts, Raleway_700Bold} from '@expo-google-fonts/raleway';
 import {Roboto_500Medium, Roboto_100Thin} from '@expo-google-fonts/roboto';
 import AppLoading from 'expo-app-loading';
+import config from './config/config.json'
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+  async function sendForm()
+  {
+      let response = await fetch(`${config.urlRoot}users`,{
+          method: 'POST',
+          headers:{
+              Accept: 'application/json',
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+          })
+      });
+  }
+
+  useEffect(()=>{
+    sendForm();
+  },[]);
+
   let [fontsLoaded] = useFonts({
     Raleway_700Bold,
     Roboto_500Medium,

@@ -5,9 +5,34 @@ import { css } from './Style';
 import WebView from 'react-native-webview';
 import { useFonts, Raleway_700Bold} from '@expo-google-fonts/raleway';
 import {Roboto_500Medium, Roboto_100Thin} from '@expo-google-fonts/roboto';
-
+import config from '../../config/config.json';
   
 export default function Usuario(props) {
+
+
+  useEffect(()=>{
+    sendForm();
+  },[]);
+  async function sendForm()
+  {
+      let response = await fetch(`${config.urlRoot}exib`,{
+          method: 'POST',
+          headers:{
+              Accept: 'application/json',
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+          })
+      });
+      let json= await response.json();
+      console.log(json);
+      setAulas(json);
+      //console.log(aulas[0].link);
+  }
+  const[aulas, setAulas] = useState(null);
+  const [num, setNum] = useState(0);
+
+
   let [fontsLoaded] = useFonts({
     Raleway_700Bold,
     Roboto_500Medium,
@@ -18,73 +43,29 @@ export default function Usuario(props) {
   const [titulo, setTitulo] = useState('Aula da Semana');
   const [tituloAula, setTituloAula] = useState(null);
   const [link, setLink] = useState(null);
-  const [num, setNum] = useState(1);
   
+  
+  // useEffect(()=>{
+  //   if(num>3){
+  //     setNum(0);
+  //   }
+  // },[]);
   function somaNum(){
-    setAula(aula+1);
-    if(aula>=4){
-      setAula(1);
+    if(num<3){
+      setNum(num+1);
+    }else{
+      setNum(0)
     }
-    if(aula==1){
-      setLink('https://docs.google.com/presentation/d/1rcZgmIu35IObo8t3sN9nMxNOWrBohoUn/edit?usp=sharing&ouid=108937410371571291706&rtpof=true&sd=true')
-      setTituloAula('Tira Dúvidas e Funções do Whatsapp')
-      setTitulo('Aula da Semana')
-    }
-    if(aula==2){
-      setLink('https://docs.google.com/presentation/d/1ceBnx95N3KeMDFpPSihM8o9HgzFUCRNT/edit?usp=sharing&ouid=108937410371571291706&rtpof=true&sd=true')
-      setTituloAula('Fotografia de Produtos pelo Celular')
-      setTitulo('Fotografia pelo Celular')
-    }
-    if(aula==3){
-      setLink('https://docs.google.com/presentation/d/1hqjBRKNd5bRxWPhrrrzUsP_vcBqXHlRR/edit?usp=sharing&ouid=108937410371571291706&rtpof=true&sd=true')
-      setTituloAula('Como usar um celular/smartphone')
-      setTitulo('Uso do Celular')
-    }
-    if(aula==4){
-      setLink('https://docs.google.com/presentation/d/1fhdMutHQRiDAFsCRBn2aBr-jymGxVvRW/edit#slide=id.p1')
-      setTituloAula('Como utilizar a Memória do celular')
-      setTitulo('Uso da memória do celular')
-    }
-
-    console.log(aula);
+    console.log(num);
   }
   function subNum(){
-    setAula(aula-1);
-    console.log(aula);
-
-    if(aula==1){
-      setLink('https://docs.google.com/presentation/d/1rcZgmIu35IObo8t3sN9nMxNOWrBohoUn/edit?usp=sharing&ouid=108937410371571291706&rtpof=true&sd=true')
-      setTituloAula('Tira Dúvidas e Funções do Whatsapp')
-      setTitulo('Aula da Semana')
+    if(num==0){
+      setNum(3)
+    }else{
+      setNum(num-1)
     }
-    if(aula==2){
-      setLink('https://docs.google.com/presentation/d/1ceBnx95N3KeMDFpPSihM8o9HgzFUCRNT/edit?usp=sharing&ouid=108937410371571291706&rtpof=true&sd=true')
-      setTituloAula('Fotografia de Produtos pelo Celular')
-      setTitulo('Fotografia pelo Celular')
-    }
-    if(aula==3){
-      setLink('https://docs.google.com/presentation/d/1hqjBRKNd5bRxWPhrrrzUsP_vcBqXHlRR/edit?usp=sharing&ouid=108937410371571291706&rtpof=true&sd=true')
-      setTituloAula('Como usar um celular/smartphone')
-      setTitulo('Uso do Celular')
-    }
-    if(aula==4){
-      setLink('https://docs.google.com/presentation/d/1fhdMutHQRiDAFsCRBn2aBr-jymGxVvRW/edit#slide=id.p1')
-      setTituloAula('Como utilizar a Memória do celular')
-      setTitulo('Uso da memória do celular')
-    }
-      
-    if(aula<=1){
-      setAula(4);
-    }
-
+    console.log(num)
   }
-  useEffect(()=>{
-    if(aula===1){
-      setLink('https://docs.google.com/presentation/d/1rcZgmIu35IObo8t3sN9nMxNOWrBohoUn/edit?usp=sharing&ouid=108937410371571291706&rtpof=true&sd=true')
-      setTituloAula('Tira Dúvidas e Funções do Whatsapp')
-    }
-  },[]);
-
 
     useEffect(()=>{
       backAction = () => {
@@ -134,13 +115,18 @@ export default function Usuario(props) {
             </TouchableOpacity>
           </View>
         </View>
-        <View style={css.body}>
-          <Text style={[{fontFamily:'Raleway_700Bold'},,css.title]}>{titulo}</Text>
-          <Text style={[{fontFamily:'Roboto_500Medium'},css.titleAula]}>{tituloAula}</Text>
-          <WebView 
-            style={css.pdf}
-            source={{ uri:link}}/>
-        </View>
+
+        {aulas &&(
+          <View style={css.body}>
+            <Text style={[{fontFamily:'Raleway_700Bold'},css.title]}>{aulas[num].title}</Text>
+            <Text style={[{fontFamily:'Roboto_500Medium'},css.titleAula]}>{aulas[num].tema}</Text>
+            <WebView 
+              style={css.pdf}
+              source={{ uri:aulas[num].link}}/>
+          </View>
+        )
+        }
+        
         <View style={css.footer}>
           <View style={css.divFooter}>  
             <TouchableOpacity

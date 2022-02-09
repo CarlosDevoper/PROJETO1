@@ -7,8 +7,9 @@ import config from '../../config/config.json';
 
 
 export default function initial(props) {
-
-  const[usuario, setUsuario] = useState(null);
+  useEffect(()=>{
+    sendForm();
+  },[]);
   async function sendForm()
   {
       let response = await fetch(`${config.urlRoot}users`,{
@@ -24,10 +25,8 @@ export default function initial(props) {
       console.log(json);
       setUsuario(json);
   }
+  const[usuario, setUsuario] = useState(null);
 
-  useEffect(()=>{
-    sendForm();
-  },[]);
     
     return( 
       <View style={styles.container}>
@@ -54,8 +53,8 @@ export default function initial(props) {
         </View>
         <View style={estilo.body}>
           <Text style={estilo.title}>Alunos Cadastrados na Plataforma</Text>
-
-          <View style={estilo.table}>
+          {usuario &&(
+            <View style={estilo.table}>
             <View style={estilo.col}>
               <Text style={estilo.lineTitle}>Nome:</Text>
               <Text style={estilo.lineTitle}>Telefone:</Text>
@@ -77,6 +76,8 @@ export default function initial(props) {
               <Text style={estilo.line}>{usuario[3].cell}</Text>
             </View>
           </View>
+          )
+          }
         </View>
       </View>
     )

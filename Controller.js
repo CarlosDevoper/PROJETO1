@@ -29,6 +29,13 @@ app.post('/users',async (req,res)=>{
     res.send(response);
 });
 
+app.post('/exib',async (req,res)=>{
+    let response= await aulas.findAll({
+        raw:true,
+    });
+    res.send(response);
+});
+
 
 
 app.post('/cadastro',async (req,res)=>{
@@ -60,6 +67,8 @@ app.post('/loginAdm',async (req,res)=>{
         res.send(response);
     }
 });
+
+
 
 let port = process.env.PORT || 3000;
 app.listen(port,(req,res)=>{
