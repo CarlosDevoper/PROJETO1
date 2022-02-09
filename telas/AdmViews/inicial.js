@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { View, Text,TouchableOpacity,Image,BackHandler, Alert  } from 'react-native';
 import { styles } from '../../Style';
-import { css } from './css';
+import { estilo } from './css';
 import { Ionicons } from '@expo/vector-icons';
 import config from '../../config/config.json';
 
@@ -10,29 +10,29 @@ export default function initial(props) {
     
     return( 
       <View style={styles.container}>
-        <View style={css.header}>
-          <View style={css.buttonPerfil}>
+        <View style={estilo.header}>
+          <View style={estilo.buttonPerfil}>
             <TouchableOpacity>
-                <Image style={css.img} source={require('../../assets/img/Perfil.png')}/>
-                <Text style={css.textButton}>Perfil</Text>
+                <Image style={estilo.img} source={require('../../assets/img/Perfil.png')}/>
+                <Text style={estilo.textButton}>Perfil</Text>
             </TouchableOpacity>
           </View>
 
-          <View style={css.buttonConversas}>
+          <View style={estilo.buttonConversas}>
             <TouchableOpacity>
-                <Image style={css.img} source={require('../../assets/img/conversar.png')}/>
-                <Text style={css.textButton}>Mensagens</Text>
+                <Image style={estilo.img} source={require('../../assets/img/conversar.png')}/>
+                <Text style={estilo.textButton}>Mensagens</Text>
             </TouchableOpacity>
           </View>
-          <View style={css.buttonAjuda}>
+          <View style={estilo.buttonAjuda}>
             <TouchableOpacity>
-                <Image style={css.img} source={require('../../assets/img/interrogação.png')}/>
-                <Text style={css.textButton}>Ajuda</Text>
+                <Image style={estilo.img} source={require('../../assets/img/interrogação.png')}/>
+                <Text style={estilo.textButton}>Ajuda</Text>
             </TouchableOpacity>
           </View>
         </View>
-        <View style={css.body}>
-          <Text style={css.title}>Alunos Cadastrados na Plataforma</Text>
+        <View style={estilo.body}>
+          <Text style={estilo.title}>Alunos Cadastrados na Plataforma</Text>
           
         </View>
       </View>

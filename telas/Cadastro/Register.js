@@ -131,7 +131,7 @@ export default function Register(props) {
         </KeyboardAvoidingView>
         <View style={styles.footer}>
                 <TouchableOpacity style={css.buttonVoltar}
-                // onPress={() =>props.navigation.navigate('ADM')}
+                onPress={() =>props.navigation.navigate('ADM')}
                 >
                 
                 <Text style={[{fontFamily:'Roboto_100Thin'},css.textAdm]}>Entrar como Administrador</Text>

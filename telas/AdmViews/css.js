@@ -1,7 +1,7 @@
 import { flushSync } from "react-dom";
 import { StyleSheet } from "react-native"
 
-const css = StyleSheet.create({
+const estilo = StyleSheet.create({
     header:{
         width:'100%',
         height:'15%',
@@ -47,11 +47,59 @@ const css = StyleSheet.create({
     },
     title:{
         color:'#6869AD',
+        paddingBottom:'4%',
         textAlign:'center',
-        fontSize:28,
+        fontSize:32,
         fontWeight:'600',
-        marginTop:'1%',
+        marginTop:'4%',
     },
+    form:{
+        width:'90%',
+        height:'auto',
+        backgroundColor:'#6869AD',
+        alignContent:'center',
+        alignSelf:'center',
+        borderRadius:20,
+    },  
+    titleForm:{
+        color:'#fff',
+        paddingTop:'10%',
+        paddingBottom:'2%',
+        textAlign:'center',
+        fontSize:30,
+        fontWeight:'600',
+    },
+    imageName:{
+        flexDirection:'row',
+        marginBottom:5,
+        marginTop:5,
+        alignContent:'center',
+        marginBottom:'2%',
+      },
+      img:{
+        marginTop:2.5,
+        width:35,
+        height:35,
+        marginRight:6,
+        alignSelf:'center',
+        justifyContent:'center',
+        alignContent:'center',
+      },
+      imput:{
+        width:'90%',
+        alignSelf:'center'
+      },
+      button:{
+        borderRadius:30,
+        width:'45%',
+        borderColor:'#00ff00',
+        borderWidth:2,
+        alignSelf:'center',
+        backgroundColor:'#fff',
+        marginBottom:'6%',
+        marginTop:'4%',
+      },
+    
 });
 
-export {css}
+export {estilo}

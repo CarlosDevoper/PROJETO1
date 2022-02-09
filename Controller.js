@@ -9,6 +9,7 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 let user = models.User;
 let coment = models.Comment;
+let aulas = models.Aula;
 
 app.post('/login',async (req,res)=>{
     let response= await user.findOne({
@@ -29,6 +30,16 @@ app.post('/cadastro',async (req,res)=>{
         admin:req.body.admin,
     });
 });
+
+app.post('/aulas',async (req,res)=>{
+    let response= await aulas.create({
+        tema:req.body.tema, 
+        title:req.body.title,
+        link:req.body.link,
+    });
+});
+
+
 
 app.post('/loginAdm',async (req,res)=>{
     let response= await user.findOne({
