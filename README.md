@@ -2,6 +2,9 @@
 
 > Status: Desenvolvido ✔️
 
+# Link para o Download da APK(Aplicativo)
+### https://drive.google.com/file/d/1JD8W-EIe6rO7wuGaHENG1wGvGLobwaIp/view?usp=sharing
+
 # Equipe: 
 ### RGCPF
 
@@ -105,7 +108,7 @@
         <td>Na tela de Administrador, no menu localizado na barra inferior do aplicativo, ao clicar no icone com o nome "Cadastrar", é exibido um formulário de cadastro do ADM, que através da função senForm() envia os dados para o banckend, pela mesma rota utilizada na tela de cadastro de alno(mudando apenas a chave de administrador), na pasta do servidor a rota vai cadastrar o administrador na tabela de usuário do banco de dados</td>
     </tr>
     <tr>
-        <td>RF0012</td>
+        <td>RF0013</td>
         <td>Cadastro de Aulas</td>
         <td>Feito ✔️</td>
         <td>Na tela de Administrador, no menu localizado na barra inferior do aplicativo, ao clicar no icone com o nome "Aula", é exibido um formulário de cadastro de aulas, que através da função senForm() envia os dados para o banckend, pela mesma rota "aulas", na pasta do servidor a rota vai cadastrar a aula no banco de dados que automaticamente já é exibida na tela de usuários(alunos)</td>
