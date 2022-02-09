@@ -22,6 +22,15 @@ app.post('/login',async (req,res)=>{
     }
 });
 
+app.post('/users',async (req,res)=>{
+    let response= await user.findAll({
+        raw:true,
+    });
+    res.send(response);
+});
+
+
+
 app.post('/cadastro',async (req,res)=>{
     let response= await user.create({
         name:req.body.name, 

@@ -99,7 +99,40 @@ const estilo = StyleSheet.create({
         marginBottom:'6%',
         marginTop:'4%',
       },
-    
+      table:{
+        width:'90%',
+        height:'auto',
+        backgroundColor:'#6869AD',
+        alignContent:'center',
+        alignSelf:'center',
+        paddingTop:'2%',
+        paddingBottom:'2%',
+      },
+      col:{
+        width:'90%',
+        alignContent:'center',
+        alignSelf:'center',
+        flexDirection:'row',
+        alignContent:'center',
+      },
+      line:{
+        width:'50%',
+        borderWidth:1,
+        borderColor:'#fff',
+        paddingTop:'1%',
+        paddingBottom:'1%',
+        paddingRight:'10%',
+        paddingLeft:'2%',
+        color:'#FFF',
+        fontSize:20,
+      },    
+      lineTitle:{
+        width:'50%',
+        paddingTop:'1%',
+        paddingBottom:'1%',
+        color:'#FFF',
+        fontSize:20,
+      },
 });
 
 export {estilo}

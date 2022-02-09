@@ -89,7 +89,7 @@ export default function initial(props) {
         <Pressable onPress={Keyboard.dismiss} style={estilo.body}>
         <KeyboardAvoidingView
         behavior={Platform.OS == "ios" ? "padding" : "height"}>
-            <Text style={[{fontFamily:'Roboto_500Medium'},estilo.title]}>Novo Administrador</Text>
+            <Text style={[{fontFamily:'Roboto_500Medium'},estilo.title]}>Novo Adiministrador</Text>
             <View style={estilo.form}>
                 <Text style={[{fontFamily:'Roboto_500Medium'},estilo.titleForm]}>CADASTRAR</Text>
                 
