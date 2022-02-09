@@ -28,6 +28,7 @@ export default function Usuario(props) {
       console.log(json);
       setAulas(json);
       //console.log(aulas[0].link);
+      //console.log(aulas.length);
   }
   const[aulas, setAulas] = useState(null);
   const [num, setNum] = useState(0);
@@ -51,7 +52,10 @@ export default function Usuario(props) {
   //   }
   // },[]);
   function somaNum(){
-    if(num<3){
+    let size = aulas.length;
+    size = size-1
+    console.log(size);
+    if(num<size){
       setNum(num+1);
     }else{
       setNum(0)
@@ -59,8 +63,11 @@ export default function Usuario(props) {
     console.log(num);
   }
   function subNum(){
+    let size = aulas.length;
+    size = size-1
+    console.log(size);
     if(num==0){
-      setNum(3)
+      setNum(size)
     }else{
       setNum(num-1)
     }
